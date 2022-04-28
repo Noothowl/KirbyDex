@@ -1,0 +1,23 @@
+:root{
+ --color-mainA: #D77FA1;
+ --color-secondaryA: #BAABDA;
+ --color-tertiaryA: #D6E5FA;
+ --color-auxiliaryA: #FFF9F9;
+
+ --color-mainB: #524A4E;
+ --color-secondaryB: #FDEFF4;
+ --color-tertiaryB: #FFC0D3;
+ --color-auxiliaryB: #FF5C8D;
+}
+body{
+    background: var(--color-secondaryA);
+}
+
+#Header{
+    background: var(--color-tertiaryB);
+    color: var(--color-auxiliaryB);
+}
+#CardHeader{
+    background: var(--color-mainA);
+    color: var(--color-secondaryB);
+}
