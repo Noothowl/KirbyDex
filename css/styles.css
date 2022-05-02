@@ -21,3 +21,8 @@ body{
     background: var(--color-mainA);
     color: var(--color-secondaryB);
 }
+
+#Img-container{
+    width: 100px;
+    height: auto;
+}
