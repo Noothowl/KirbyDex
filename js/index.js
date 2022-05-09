@@ -45,31 +45,31 @@ tinymce.init({
         if (w.type == "1"){
           //Water <i class="fa-solid fa-droplet"></i> 
           // Para pasarle al elemento type (js) para agregarle clases (html)
-          type.classList.add("fa-solid","fa-droplet"); 
+          type.classList.add("fa-lg","fa-solid","fa-droplet", "text-primary"); 
         }else if (w.type == "2"){
           //Fire <i class="fa-solid fa-fire"></i>
-          type.classList.add("fa-solid","fa-fire");
+          type.classList.add("fa-lg","fa-solid","fa-fire", "text-danger");
         }else if (w.type == "3"){
           //Grass  <i class="fa-solid fa-leaf"></i>
-          type.classList.add("fa-solid","fa-leaf");
+          type.classList.add("fa-lg","fa-solid","fa-leaf", "text-success");
         }else if (w.type == "4"){
           //Normal <i class="fa-regular fa-face-meh-blank"></i>
-          type.classList.add("fa-regular","fa-face-meh-blank");
+          type.classList.add("fa-lg","fa-regular","fa-face-meh-blank", "text-secondary");
         }else if (w.type == "5"){
           //Duelist  <i class="fa-duotone fa-hand-back-fist"></i>
-          type.classList.add("fa-solid","fa-hand-back-fist");
+          type.classList.add("fa-lg","fa-solid","fa-hand-back-fist","text-dark");
         }else if (w.type == "6"){
           //Cosmic <i class="fa-solid fa-star"></i> 
-          type.classList.add("fa-solid","fa-star");
+          type.classList.add("fa-lg","fa-solid","fa-star", "text-warning");
         }else if (w.type == "7"){
           //Undead <i class="fa-solid fa-ghost"></i>
-          type.classList.add("fa-solid","fa-ghost");
+          type.classList.add("fa-lg","fa-solid","fa-ghost");
         }else if (w.type == "8"){
           //mistic <i class="fa-solid fa-wand-magic-sparkles"></i>
-          type.classList.add("fa-solid","fa-wand-magic-sparkles")
+          type.classList.add("fa-lg","fa-solid","fa-wand-magic-sparkles", "text-info")
         }
 
-
+        tdElemento.classList.add("text-center");
         tdElemento.appendChild(type);
         //Agregar elemento dentro de otro: AppendChild
         //Definir texto innerText
