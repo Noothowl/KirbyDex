@@ -19,14 +19,20 @@ tinymce.init({
 const warriors = [];
 //Función normal se declara así: Funct = ()=>{}
 //Funciión asociada a un botón se declara así
-const deleteWarrior= function(){
-  Swal.fire({
+const deleteWarrior= async function(){
+  let res = await Swal.fire({
     title:'Desea eliminar al guerrero "'+warriors[this.nro].name+'" ?',
     showCancelButton: true,
     confirmButtonColor: '#dc3545',
     confirmButtonText: 'Sí, elimínalo!',
     
-  });
+  });if (res.isConfirmed){
+    Swal.fire("El guerrero ha sido eliminado, que triste");
+    warriors.splice(this.nro,1); //Splice: reconstruct the list deleting "this.nro" (x,y), X the actual index and Y the deleted amount; and extract another array
+    cargarTabla();  //To reconstruct the table/list 
+  }else{
+    Swal.fire("El guerrero no se ha eliminado");
+  }
   console.log(this.nro);
 };
 
