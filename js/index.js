@@ -14,6 +14,22 @@ tinymce.init({
     'removeformat | help',
     content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
   });
+
+//Crea un arreglo --> en verdad es una "lista" porque es dinámica
+const warriors = [];
+//Función normal se declara así: Funct = ()=>{}
+//Funciión asociada a un botón se declara así
+const deleteWarrior= function(){
+  Swal.fire({
+    title:'Desea eliminar al guerrero "'+warriors[this.nro].name+'" ?',
+    showCancelButton: true,
+    confirmButtonColor: '#dc3545',
+    confirmButtonText: 'Sí, elimínalo!',
+    
+  });
+  console.log(this.nro);
+};
+
   //Funciones se definen arriba
   //cargarTabla
   const cargarTabla = ()=>{
@@ -31,9 +47,22 @@ tinymce.init({
         //4 por cada atributo generar td
         let tdNro = document.createElement("td");
         let tdNombre = document.createElement("td");
+        if(w.legend){
+          tdNombre.classList.add("text-warning");
+          tdNombre.classList.add("bg-dark");
+        }
+
         let tdElemento = document.createElement("td");
         let tdDescripcion = document.createElement("td");
         let tdAcciones = document.createElement("td");
+        tdAcciones.classList.add("text-center");
+        let btn = document.createElement("button"); //Crea elemento boton
+        btn.classList.add("btn","btn-outline-danger"); //Agrega clases al elemento boton
+        btn.innerText="Eliminar guerrero"; //añade texto al elemento boton
+        btn.nro= i;
+        btn.addEventListener("click", deleteWarrior);
+        tdAcciones.appendChild(btn); //Agrega un elemento en otro (tdAcciones agrega dentro el btn)
+
 
 
         //Definir valores de los elementos *innerText valor interno
@@ -76,7 +105,7 @@ tinymce.init({
         //definir Html innerHtml
 
         tdDescripcion.innerHTML = w.description
-        //ToDo tdAcciones
+      
 
         //5 agregar td a los tr     *appendChild para agregar elemento dentro de otro
         tr.appendChild(tdNro);
@@ -91,8 +120,7 @@ tinymce.init({
 
     
   };
-  //Crea un arreglo --> en verdad es una "lista" porque es dinámica
-  const warriors = [];
+  
 
 document.querySelector("#btn-register").addEventListener("click", ()=>{
     let name = document.querySelector("#WarriorName-txt").value;         //value is for value of "input"
@@ -120,5 +148,16 @@ document.querySelector("#btn-register").addEventListener("click", ()=>{
     //SweetAlert
     Swal.fire("Registro exitoso!","EL guerrero ingresado", "success");
 
+
+});
+
+
+//Clear btn function --> Esto jhace que se vacíe el formulario
+document.querySelector("#btn-clear").addEventListener("click", ()=>{
+  document.querySelector("#WarriorName-txt").value="";
+  // document.querySelector("#WarriorDescription-txt").value="";
+  tinymce.get("WarriorDescription-txt").setContent(""); //Solo para el tinymce
+  document.querySelector("#Legend-toggle-no").checked = true;
+  document.querySelector("#Type-select").value="1";
 
 });
